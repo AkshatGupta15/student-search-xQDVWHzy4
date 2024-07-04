@@ -23,7 +23,7 @@ if (!(typeof window === "undefined") && window.Worker) {//only on the client, TO
 const isIFrame = (typeof window !== "undefined") && (window.top === window.self);
 
 export default function Home(props: Object) {
-
+	// const [por, setPor]:[Array<]
 	const [students, setStudents]:[Array<StudentType>, Function] = useState([]);
 	const [darkMode, setDarkMode]=useState(true);
 	//initial render doesn't have access to localStorage so start off with true
@@ -42,6 +42,7 @@ export default function Home(props: Object) {
 	function queryHandler(event: any) {
 //		console.log("Query result received");
 		if (event.data[0] == "query") {
+			console.log(event.data)
 			setStudents(event.data[1].toSorted((a:StudentType, b:StudentType) => {
 				try {
 					return (Number(a.i) > Number(b.i));
@@ -56,6 +57,7 @@ export default function Home(props: Object) {
 	function treeHandler(event: any) {
 //		console.log("Tree result received");
 		if (event.data[0] == "ft") {
+			console.log(event.data)
 // 			document.body.style.overflow = "hidden"; //hotfix
 			let [baapu, student, bacchas] = event.data[1];
 			setCurr([
@@ -63,7 +65,7 @@ export default function Home(props: Object) {
 				key="open"
 				data={student}
 				baapu={baapu /*TreeCard'll handle undefined*/}
-				bacchas={bacchas}
+				bacchas={bacchas} 
 				displayCard={displayCard}
 				clearOverlay={clearOverlay}
 			/>,

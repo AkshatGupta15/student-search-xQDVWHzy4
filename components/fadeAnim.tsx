@@ -16,6 +16,7 @@ const  FadeAnim = React.forwardRef((props: FadeAnimProps, ref) => {
 			appear={props.in}
 		>
 		{React.Children.map(props.children, (child) => {
+			// console.log(child)
 			return (
 				<CSSTransition
 					classNames="fade"

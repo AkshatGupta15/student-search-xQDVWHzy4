@@ -33,3 +33,10 @@ export interface Options {//type declaration
 	 dept: Array<string>;
 	 bloodgrp: Array<string>
 }
+
+export interface PORList {
+	Vertical : string;
+	name : string;
+	rollno: number;
+	email : string;
+}

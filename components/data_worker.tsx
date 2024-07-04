@@ -1,6 +1,5 @@
 // import students from "@/pages/api/data.json";
 import {Student, Query, Options} from  "./commontypes";
-
 var students: any[] = []
 var new_students: any[] | undefined = undefined;
 var config = {
@@ -107,6 +106,7 @@ async function fetch_student_data() { //WILL throw errors when something goes wr
 }
 
 
+
 async function start_IDB() { //if this resolves, the global variable 'db' should contain a reference to the database - otherwise it should remain an empty string
 	return new Promise((resolve, reject) => {
 		db = "";
@@ -185,6 +185,7 @@ async function update_IDB(students) {
 					trxn.objectStore("students").add({"students": students, "key":1});
 					//add update time for future reference
 					trxn.objectStore("students").add({"time": Date.now(), "key": 2});
+
 				}
 			}
 			trxn.oncomplete = () => {
@@ -265,6 +266,7 @@ function prepare_worker() {//student data should be in a global variable called 
 			postMessage(["Options", options]);
 		} else if (Array.isArray(event.data)) {// data style: ["ft", student (an object as seen above)]
 //			console.log("Family tree");
+			
 			let student = event.data[1];
 			let baapu = students.filter((st: Student) => (st.i === student.s))[0]; //note that this can also be undefined - this will be handled by TreeCard
 			let bacchas = check_bacchas(student.c);

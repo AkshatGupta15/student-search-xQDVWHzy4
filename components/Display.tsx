@@ -21,9 +21,12 @@ interface DisplayProps {
 
 function Display(props: DisplayProps) {
 	const [pos, setPos] = useState(50);
+
+
 	
 	const students = (typeof props.toShow.map === "function")
 		?props.toShow.map(el => {
+
 			return (
 				<SCard 
 					data={el} 

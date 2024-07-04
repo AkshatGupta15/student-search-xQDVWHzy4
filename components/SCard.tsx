@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Image from "./UserImage";
 import {Student} from "./commontypes";
+import {PORListData} from  "./por.js"
 import {EmailRounded, InvertColorsRounded, HomeRounded, AccountBalanceRounded, Public, PeopleOutlineRounded } from "@mui/icons-material";
 //import "styles/SCard.css";
 
@@ -18,6 +19,11 @@ interface SCardProps {
 }
 
 const SCard = React.forwardRef((props: SCardProps, ref:any) => {
+	let por = PORListData["2023-2024"].filter((por)=> (por.rollno?.toString() === props.data.i ))
+	if (por.length != 0){
+		console.log(por)
+	}
+	
 	switch (props.compact) {
 		case 'ultra':
 			return (
@@ -92,6 +98,7 @@ const SCard = React.forwardRef((props: SCardProps, ref:any) => {
 					<div><HomeRounded /><p>{props.data.a}</p></div>
 					<div><InvertColorsRounded /><p>{props.data.b}</p></div>
 					{(props.data.u.length > 0 )? <div><EmailRounded /><p><a href={`mailto:${props.data.u}@iitk.ac.in`}>{props.data.u}@iitk.ac.in</a></p></div> : ""}
+					<div><ul>{por.map((p)=><li>{p.Vertical}</li> )}</ul></div>
 					</div>
 					<a href={`https://home.iitk.ac.in/~${props.data.u}`} target="_blank"><Button style={{flexDirection:"column"}}><Public /><br /><div>Visit Homepage</div></Button></a>
 					{props.children}
