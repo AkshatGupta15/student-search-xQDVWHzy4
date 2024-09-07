@@ -5,9 +5,9 @@ var new_students: any[] | undefined = undefined;
 var config = {
     "APP_ID": "data-yubip",
     "API_KEY": "XvhvZNBWObiDyf651zDE8LsSx59zssBKVMlTHSftn566l7rXoVrbQxnW0L2p6L5A",
-    "cluster_name": "Cluster0",
-    "db_name": "student_data",
-    "collection_name": "student_data"
+    "cluster_name": "students",
+    "db_name": "students",
+    "collection_name": "students"
 }
 
 // console.log("Worker instantiated");
